@@ -73,8 +73,7 @@ public class Engine {
         System.out.println("Current Fuel Level:" + CurrentFuelLevel);
         if(CurrentFuelLevel > 0) {
             return true;
-        }
-        else{
+        } else{
             return false;
         }
         }

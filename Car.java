@@ -41,8 +41,7 @@ public class Car {
         if (seatsRemaining() > 0) {
             passengersOnBoard.add(p);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
         
@@ -57,8 +56,7 @@ public class Car {
         if (passengersOnBoard.contains(p)) {
             passengersOnBoard.remove(p);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
         
@@ -72,8 +70,7 @@ public class Car {
             for (int i = 0; i < passengersOnBoard.size(); i++){
                 System.out.println(passengersOnBoard.get(i).getName());
             }
-        }
-        else{
+        } else{
             System.out.println("This car is EMPTY.");
         }
     }

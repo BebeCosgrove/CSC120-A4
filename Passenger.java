@@ -36,7 +36,9 @@ public class Passenger {
      */
     public void getOffCar(Car c){
         if (c.removePassenger(this) == true);
-        }
+
 
     
+}
+
 }
