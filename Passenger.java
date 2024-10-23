@@ -24,7 +24,8 @@ public class Passenger {
      * @param c
      */
     public void boardCar(Car c){
-        if (c.addPassenger(this) == true);
+        if (c.addPassenger(this) == false);
+        System.out.println("Passenger was unable to board car");
         
 
 
@@ -35,7 +36,8 @@ public class Passenger {
      * @param c
      */
     public void getOffCar(Car c){
-        if (c.removePassenger(this) == true);
+        if (c.removePassenger(this) == false);
+        System.out.println("Passenger is not aboard car");
 
 
     

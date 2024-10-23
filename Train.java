@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 public class Train {
-    private FuelType fuelType;
-    private double fuelCapacity;
     private int nCars;
     private int passengerCapacity;
     private Engine engine;
@@ -11,21 +9,22 @@ public class Train {
 
     /**
      * Constructor
-     * @param fuelType
-     * @param fuelCapacity
+     * @param fuel_type
+     * @param max_fuel_level
      * @param nCars
      * @param passengerCapacity
      */
 
     public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity){
-        this.fuelType = fuelType;
-        this.fuelCapacity = fuelCapacity;
+        this.engine = new Engine(fuelType, fuelCapacity, fuelCapacity);
+        this.car_list = new ArrayList<Car>(nCars);
+
+
         this.nCars = nCars;
         this.passengerCapacity = passengerCapacity;
 
 
-        this.engine = new Engine(fuelType, fuelCapacity, fuelCapacity);
-        this.car_list = new ArrayList<Car>(nCars);
+        
 
         for (int i = 0; i < nCars; i++){
             Car car = new Car(passengerCapacity);

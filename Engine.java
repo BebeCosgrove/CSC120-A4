@@ -1,25 +1,25 @@
 public class Engine {
     private FuelType fuel_type;
-    private double CurrentFuelLevel;
-    private double MaxFuelLevel;
+    private double current_fuel_level;
+    private double max_fuel_level;
 
     /**
      * Constructor
-     * @param fuel_type
-     * @param current_fuel_level
-     * @param max_fuel_level
+     * @param fuel_type fuel type
+     * @param current_fuel_level current fuel type
+     * @param max_fuel_level max fuel level
      */
 
     public Engine(FuelType fuel_type, double current_fuel_level, double max_fuel_level) {
         this.fuel_type  = fuel_type;
-        this.CurrentFuelLevel = current_fuel_level;
-        this.MaxFuelLevel = max_fuel_level;
+        this.current_fuel_level = current_fuel_level;
+        this.max_fuel_level = max_fuel_level;
 
     }
 
     /**
     * Getter for Fuel Type
-    * @return
+    * @return returns the fuel_type value
     */
 
     public FuelType getFuelType() {
@@ -28,26 +28,26 @@ public class Engine {
 
     /**
     * Getter for Current Fuel Level
-    * @return
+    * @return returns the current_fuel_level
     */
 
     public double getCurrentFuelLevel() {
-        return this.CurrentFuelLevel;
+        return this.current_fuel_level;
     }
 
     /**
     * Getter for Max Fuel Level
-    * @return
+    * @return returns the max_fuel_level
     */
 
     public double getMaxFuelLevel() {
-        return this.MaxFuelLevel;
+        return this.max_fuel_level;
     }
 
 
     /** 
     * Setter for Fuel Type
-    * @param new_fuel_type
+    * @param new_fuel_type new value that fuel_type is to be changed to
     */
     public void setFuelType(FuelType new_fuel_type){
         this.fuel_type = new_fuel_type;
@@ -59,7 +59,7 @@ public class Engine {
     * Resets the current fuel level to the maximum fuel level
     */
     public void refuel(){
-        this.CurrentFuelLevel = MaxFuelLevel;
+        this.current_fuel_level = max_fuel_level;
     }
     
 
@@ -69,17 +69,22 @@ public class Engine {
      * @return T/F depending on if the current fuel level is greater than 0 or not
      */
     public boolean go(){
-        this.CurrentFuelLevel = CurrentFuelLevel - 50;
-        System.out.println("Current Fuel Level:" + CurrentFuelLevel);
-        if(CurrentFuelLevel > 0) {
+        System.out.println("Current Fuel Level:" + current_fuel_level);
+        if(current_fuel_level - 50  >= 0) {
+            this.current_fuel_level = current_fuel_level - 50;
             return true;
         } else{
+            System.out.println("Minimum Fuel Level: 50. Refuel and go");
             return false;
         }
         }
         
     
 
+        /**
+     * Main method
+     * @param args command line arguments passed into methods
+     */
     public static void main(String[] args) {
         Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0, 200.00);
         while (myEngine.go()) {

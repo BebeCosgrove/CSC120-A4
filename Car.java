@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 public class Car {
-    private int MaximumCapacity;
-    private ArrayList<Passenger> passengersOnBoard;
+    private int maximum_capacity;
+    private ArrayList<Passenger> passengers_on_board;
 
     /**
      * Constructor
      * @param maximum_capacity
      */
     public Car(int maximum_capacity) {
-        this.MaximumCapacity = maximum_capacity;
-        this.passengersOnBoard = new ArrayList<Passenger>(MaximumCapacity);
+        this.maximum_capacity = maximum_capacity;
+        this.passengers_on_board = new ArrayList<Passenger>(maximum_capacity);
        
 
         
@@ -20,7 +20,7 @@ public class Car {
      * @return Int for maximum capacity on the car
      */
     public int getCapacity() {
-        return this.MaximumCapacity;
+        return this.maximum_capacity;
 
     }
 
@@ -29,7 +29,7 @@ public class Car {
      * @return Int of how many seats are left on car
      */
     public int seatsRemaining(){
-        return (this.MaximumCapacity - passengersOnBoard.size());
+        return (this.maximum_capacity - passengers_on_board.size());
     }
 
     /**
@@ -39,9 +39,13 @@ public class Car {
      */
     public boolean addPassenger(Passenger p) {
         if (seatsRemaining() > 0) {
-            passengersOnBoard.add(p);
-            return true;
-        } else {
+            if (passengers_on_board.contains(p)){
+                return false;
+            } else {
+                passengers_on_board.add(p);
+                return true;
+            } } 
+            else {
             return false;
         }
         
@@ -53,8 +57,8 @@ public class Car {
      * @return T/F depending on if the passenger was removed or not
      */
     public boolean removePassenger(Passenger p) {
-        if (passengersOnBoard.contains(p)) {
-            passengersOnBoard.remove(p);
+        if (passengers_on_board.contains(p)) {
+            passengers_on_board.remove(p);
             return true;
         } else {
             return false;
@@ -66,15 +70,19 @@ public class Car {
      * Prints a list of the remaining passengers on the car
      */
     public void printManifest(){
-        if ((passengersOnBoard.size()) > 0){
-            for (int i = 0; i < passengersOnBoard.size(); i++){
-                System.out.println(passengersOnBoard.get(i).getName());
+        if ((passengers_on_board.size()) > 0){
+            for (int i = 0; i < passengers_on_board.size(); i++){
+                System.out.println(passengers_on_board.get(i).getName());
             }
         } else{
             System.out.println("This car is EMPTY.");
         }
     }
 
+    /**
+     * Main method
+     * @param args command line arguments passed into methods
+     */
     public static void main(String[] args) {
         Car myCar = new Car(500);
         Passenger passenger = new Passenger("Bebe");
